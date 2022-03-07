@@ -2,8 +2,7 @@
 
 ## Overview
 
-This project aims to enhance springboot cache without code invasion.
-The enhancement could make the spring cache adapt to high concurrency scenarios.
+This project aims to enhance springboot cache without code invasion in high concurrency scenarios.
 
 ## Roadmap
 
@@ -72,7 +71,7 @@ logging:
 Logs example,
 
 ```tex
-2022-03-07 21:12:50.262 DEBUG 83423 --- [nio-8080-exec-1] c.g.h.c.e.listener.ListenableCache       : Evict cache
-2022-03-07 21:12:50.263 DEBUG 83423 --- [nio-8080-exec-1] c.g.h.c.e.listener.ListenableCache       : Evict cache delayed operation published
-2022-03-07 21:12:50.282 DEBUG 83423 --- [pool-1-thread-1] c.g.h.c.e.listener.EvictCacheOperation   : Re-evict cache
+2022-03-07 21:56:40.780 DEBUG 85337 --- [nio-8080-exec-1] c.g.h.c.e.listener.ListenableCache       : Evict cache
+2022-03-07 21:56:40.782 DEBUG 85337 --- [nio-8080-exec-1] c.g.h.c.e.listener.ListenableCache       : Evict cache delayed operation published
+2022-03-07 21:56:42.804 DEBUG 85337 --- [pool-1-thread-1] c.g.h.c.e.listener.EvictCacheOperation   : Re-evict cache
 ```
