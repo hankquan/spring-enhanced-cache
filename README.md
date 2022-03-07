@@ -7,7 +7,8 @@ The enhancement could make the cache implementation adapt to high concurrency sc
 
 ## Roadmap
 
-- [x] Delayed double eviction of cache by @CacheEviction
+- [x] Delayed double eviction of cache by @CacheEvict
+- [ ] Retry eviction of cache when failed to delete cache
 - [ ] Random cache TTL in a specific range
 
 ## User Guide
