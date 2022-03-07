@@ -39,6 +39,7 @@ The enhancer will create an EnhancedCacheManager and inject to spring container,
 
 ```yaml
 spring:
+  cache:
     type: redis
     redis:
       time-to-live: 10000 # time unit is millis
