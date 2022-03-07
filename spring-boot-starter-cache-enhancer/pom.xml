@@ -7,9 +7,8 @@
         <artifactId>spring-enhanced-cache</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>spring-enhanced-cache-redis</artifactId>
-    <name>spring-enhanced-cache-redis</name>
-    <description>spring-enhanced-cache-redis</description>
+    <artifactId>spring-boot-starter-cache-enhancer</artifactId>
+    <name>spring-boot-starter-cache-enhancer</name>
 
     <dependencies>
         <dependency>
@@ -18,12 +17,8 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.howaric.cache</groupId>
-            <artifactId>spring-enhanced-cache-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

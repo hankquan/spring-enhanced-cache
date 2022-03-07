@@ -1,4 +1,4 @@
-package com.github.howaric.cache.core.delay;
+package com.github.howaric.cache.enhancer.delay;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -54,7 +54,6 @@ public class DelayTrigger<T> {
             while (running && !isInterrupted()) {
                 process();
             }
-            System.out.println("quit");
         }
 
     }

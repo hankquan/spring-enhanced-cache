@@ -1,4 +1,4 @@
-package com.github.howaric.cache.core;
+package com.github.howaric.cache.enhancer.listener;
 
 @FunctionalInterface
 public interface DelayedCacheOperation {

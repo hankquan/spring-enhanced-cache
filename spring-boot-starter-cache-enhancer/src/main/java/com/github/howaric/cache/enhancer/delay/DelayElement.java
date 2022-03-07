@@ -1,4 +1,4 @@
-package com.github.howaric.cache.core.delay;
+package com.github.howaric.cache.enhancer.delay;
 
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
