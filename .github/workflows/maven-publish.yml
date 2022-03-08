@@ -1,21 +1,13 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-
 name: Maven Deploy
 
 on: workflow_dispatch
 
 jobs:
   publish:
-# 任务运行的环境
     runs-on: ubuntu-latest
-# 任务的步骤
     steps:
-# 1. 声明 checkout 仓库代码到工作区
       - name: Checkout Git Repo
         uses: actions/checkout@v2
-# 2. 安装Java 环境 这里会用到的参数就是 Git Action secrets中配置的，
-#    取值要在key前面加  secrets.
       - name: Set up Maven Central Repo
         uses: actions/setup-java@v1
         with:
@@ -24,9 +16,7 @@ jobs:
           server-username: ${{ secrets.OSSRH_USER }}
           server-password: ${{ secrets.OSSRH_PASSWORD }}
           gpg-passphrase:  ${{ secrets.GPG_PASSWORD }}
-# 3. 发布到Maven中央仓库
       - name: Publish to Maven Central Repo
-# 这里用到了其他人写的action脚本，详细可以去看他的文档。
         uses: samuelmeuli/action-maven-publish@v1
         with:
           gpg_private_key: ${{ secrets.GPG_SECRET }}
