@@ -12,15 +12,13 @@ This project aims to enhance springboot cache without code invasion in high conc
 
 ## User Guide
 
-The release is not published yet, you can clone the repo and compile locally as workaround for now.
-
-Dependency shall look like as below, spring-boot-starter-cache won't be needed when this dependency is added in your project.
+Add dependency as below, spring-boot-starter-cache won't be needed when this dependency is added in your project.
 
 ```xml
 <dependency>
     <groupId>cn.howaric.cache</groupId>
     <artifactId>spring-boot-starter-cache-enhancer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 </dependency>
 ```
 

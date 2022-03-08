@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.howaric.cache</groupId>
         <artifactId>spring-enhanced-cache</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>spring-boot-starter-cache-enhancer</artifactId>
     <name>spring-boot-starter-cache-enhancer</name>
