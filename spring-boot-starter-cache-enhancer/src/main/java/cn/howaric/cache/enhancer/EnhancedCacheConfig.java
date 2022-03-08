@@ -1,4 +1,4 @@
-package com.github.howaric.cache.enhancer;
+package cn.howaric.cache.enhancer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

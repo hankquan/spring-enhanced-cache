@@ -1,6 +1,6 @@
-package com.github.howaric.cache.enhancer.listener;
+package cn.howaric.cache.enhancer.listener;
 
-import com.github.howaric.cache.enhancer.delay.DelayTrigger;
+import cn.howaric.cache.enhancer.delay.DelayTrigger;
 import org.springframework.cache.Cache;
 
 public class CacheEventListener {

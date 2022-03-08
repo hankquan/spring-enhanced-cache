@@ -1,9 +1,9 @@
-package com.github.howaric.cache.enhancer;
+package cn.howaric.cache.enhancer;
 
-import com.github.howaric.cache.enhancer.delay.DelayTrigger;
-import com.github.howaric.cache.enhancer.listener.CacheEventListener;
-import com.github.howaric.cache.enhancer.listener.DelayedCacheOperation;
-import com.github.howaric.cache.enhancer.listener.ListenableCache;
+import cn.howaric.cache.enhancer.delay.DelayTrigger;
+import cn.howaric.cache.enhancer.listener.CacheEventListener;
+import cn.howaric.cache.enhancer.listener.DelayedCacheOperation;
+import cn.howaric.cache.enhancer.listener.ListenableCache;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.util.Assert;

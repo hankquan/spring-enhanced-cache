@@ -1,4 +1,4 @@
-package com.github.howaric.cache.enhancer;
+package cn.howaric.cache.enhancer;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

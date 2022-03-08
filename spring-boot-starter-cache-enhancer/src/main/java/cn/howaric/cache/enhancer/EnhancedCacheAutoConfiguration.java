@@ -1,4 +1,4 @@
-package com.github.howaric.cache.enhancer;
+package cn.howaric.cache.enhancer;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;

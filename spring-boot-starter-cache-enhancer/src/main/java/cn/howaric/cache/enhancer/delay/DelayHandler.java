@@ -1,4 +1,4 @@
-package com.github.howaric.cache.enhancer.delay;
+package cn.howaric.cache.enhancer.delay;
 
 public interface DelayHandler<T> {
 

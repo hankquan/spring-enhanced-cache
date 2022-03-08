@@ -18,7 +18,7 @@ Dependency shall look like as below, spring-boot-starter-cache won't be needed w
 
 ```xml
 <dependency>
-    <groupId>com.github.howaric.cache</groupId>
+    <groupId>cn.howaric.cache</groupId>
     <artifactId>spring-boot-starter-cache-enhancer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 </dependency>
@@ -35,7 +35,7 @@ Add a cache implementation such as redis:
 
 You can define your own CacheManager, if not, a default CacheManager will be created. By the way, this default CacheManager is not created by the enhancer but spring cache. 
 
-The enhancer will create an EnhancedCacheManager and inject to spring container, the EnhancedCacheManager's name is defined in `com.github.howaric.cache.enhancer.EnhancedCacheManager.ENHANCED_CACHE_MANAGER`, its name can also be specified by `spring.cache.enhanced.enhancedCacheManagerName` in spring application.yml.
+The enhancer will create an EnhancedCacheManager and inject to spring container, the EnhancedCacheManager's name is defined in `cn.howaric.cache.enhancer.EnhancedCacheManager.ENHANCED_CACHE_MANAGER`, its name can also be specified by `spring.cache.enhanced.enhancedCacheManagerName` in spring application.yml.
 
 ```yaml
 spring:
@@ -48,7 +48,7 @@ spring:
       delay-time: 2000 # means deleting cache eviction again after 2s, default is 5s
 ```
 
-Then you can just use this CacheManager in @CacheEvict annotation, and then @CacheEvict will trigger a delayed eviction of the cache in the specific delay time. 
+Then you can just use this CacheManager in @CacheEvict annotation, and @CacheEvict will trigger a delayed eviction of the cache in the specific delay time. 
 
 ```java
 @CacheEvict(key = "#p0.username", cacheManager = EnhancedCacheManager.ENHANCED_CACHE_MANAGER)
@@ -61,12 +61,12 @@ public void updateUser(User user) {
 
 1. How to make sure the EnhancedCacheManager really trigger the delayed eviction of cache?
 
-You can just open the debug log for package `com.github.howaric.cache`, then you will see the related logs.
+You can just open the debug log for package `cn.howaric.cache`, then you will see the related logs.
 
 ```yaml
 logging:
   level:
-    com.github.howaric.cache: debug
+    cn.howaric.cache: debug
 ```
 
 Logs example,
