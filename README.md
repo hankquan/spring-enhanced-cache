@@ -51,7 +51,7 @@ spring:
     type: redis
     redis:
       time-to-live: 10000 # time unit is millis
-    enhanced:
+    enhancer:
       # enhanced-cache-manager-name: "customEnhancedCacheManager" # name of the cache manager
       delay-time: 2000 # means deleting cache eviction again after 2s, default is 5s
 ```

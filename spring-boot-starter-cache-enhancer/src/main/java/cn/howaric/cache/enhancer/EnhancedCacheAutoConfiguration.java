@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Configuration;
 public class EnhancedCacheAutoConfiguration implements BeanPostProcessor, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
-
     private EnhancedCacheProperties enhancedCacheProperties;
 
     @Autowired

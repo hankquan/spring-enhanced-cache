@@ -2,7 +2,7 @@ package cn.howaric.cache.enhancer;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "spring.cache.enhanced")
+@ConfigurationProperties(prefix = "spring.cache.enhancer")
 public class EnhancedCacheProperties {
 
     private String enhancedCacheManagerName = EnhancedCacheManager.ENHANCED_CACHE_MANAGER;
