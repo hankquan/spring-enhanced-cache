@@ -2,8 +2,7 @@
 
 [![CI](https://github.com/howaric/spring-enhanced-cache/actions/workflows/maven-publish.yml/badge.svg?branch=main)](https://github.com/howaric/spring-enhanced-cache/actions/workflows/maven-publish.yml)
 [![License](https://img.shields.io/github/license/howaric/spring-enhanced-cache.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![OSS Lifecycle](https://img.shields.io/osslifecycle/howaric/spring-enhanced-cache.svg)]()
-[![Github release](https://img.shields.io/github/v/release/howaric/spring-enhanced-cache.svg)](https://GitHub.com/howaric/spring-enhanced-cache/releases)
+![Maven Central](https://img.shields.io/maven-central/v/cn.howaric.cache/spring-enhanced-cache)
 
 ## Overview
 
@@ -17,7 +16,7 @@ This project aims to enhance springboot cache without code invasion in high conc
 
 ## User Guide
 
-Add dependency as below, spring-boot-starter-cache won't be needed when this dependency is added in your project.
+Add dependency as below, latest version: [![Github release](https://img.shields.io/github/v/release/howaric/spring-enhanced-cache.svg)](https://GitHub.com/howaric/spring-enhanced-cache/releases)
 
 ```xml
 <dependency>
@@ -26,6 +25,7 @@ Add dependency as below, spring-boot-starter-cache won't be needed when this dep
     <version>0.0.1</version>
 </dependency>
 ```
+>spring-boot-starter-cache won't be needed when this dependency is added in your project.
 
 Add a cache implementation such as redis:
 
