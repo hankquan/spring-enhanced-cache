@@ -4,31 +4,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class DelayTrigger<T> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DelayTrigger.class);
-    private static final AtomicInteger cnt = new AtomicInteger();
     private final DelayQueue<DelayElement<T>> queue;
     private final DelayHandler<T> delayHandler;
-    private final ExecutorService consumer;
+    private final ExecutorService threadPool;
     private final long delayTime;
-    private volatile boolean running = true;
 
     public DelayTrigger(DelayHandler<T> delayHandler, long delayTime) {
         this.delayHandler = delayHandler;
         this.delayTime = delayTime;
         this.queue = new DelayQueue<>();
-        CacheOperationHandler cacheOperationHandler = new CacheOperationHandler();
-        cacheOperationHandler.setName("delay-trigger-" + cnt.incrementAndGet());
-        cacheOperationHandler.setDaemon(true);
-        cacheOperationHandler.start();
-        consumer = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS,
-                new SynchronousQueue<>(),
-                new CustomizableThreadFactory("cache-delay-handler-"),
+        threadPool = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS,
+                new SynchronousQueue<>(),//only one task for now
+                new CustomizableThreadFactory("cache-delay-handler"),
                 new ThreadPoolExecutor.DiscardPolicy());
+        threadPool.execute(this::process);
     }
 
     public void put(final T t) {
@@ -36,31 +34,29 @@ public class DelayTrigger<T> {
     }
 
     public void shutdown() {
-        this.running = false;
-        this.consumer.shutdownNow();
-    }
-
-    private void process() {
+        threadPool.shutdown();
         try {
-            final DelayElement<T> delayElement = queue.poll(3, TimeUnit.SECONDS);
-            if (delayElement != null) {
-                consumer.execute(() -> delayHandler.handle(delayElement.getElement()));
+            if (!threadPool.awaitTermination(5, TimeUnit.SECONDS)) {
+                threadPool.shutdownNow();
             }
         } catch (InterruptedException e) {
-            // warn interrupt
-            LOGGER.warn("Error when kick-off delayed cache evict operation", e);
+            threadPool.shutdownNow();
+            Thread.currentThread().interrupt();
         }
     }
 
-    private class CacheOperationHandler extends Thread {
 
-        @Override
-        public void run() {
-            while (running && !isInterrupted()) {
-                process();
+    private void process() {
+        while (!Thread.currentThread().isInterrupted()) {
+            try {
+                final DelayElement<T> delayElement = queue.poll(3, TimeUnit.SECONDS);
+                if (delayElement != null) {
+                    delayHandler.handle(delayElement.getElement());
+                }
+            } catch (InterruptedException e) {
+                LOGGER.warn("Error when kick-off delayed cache evict operation", e);
             }
         }
-
     }
 
 }
