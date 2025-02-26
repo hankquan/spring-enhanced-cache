@@ -1,10 +1,15 @@
 package cn.howaric.cache.enhancer.delay;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
+
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class DelayTrigger<T> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DelayTrigger.class);
     private static final AtomicInteger cnt = new AtomicInteger();
     private final DelayQueue<DelayElement<T>> queue;
     private final DelayHandler<T> delayHandler;
@@ -22,7 +27,7 @@ public class DelayTrigger<T> {
         cacheOperationHandler.start();
         consumer = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS,
                 new SynchronousQueue<>(),
-//                new CustomizableThreadFactory("cache-delay-handler-"),
+                new CustomizableThreadFactory("cache-delay-handler-"),
                 new ThreadPoolExecutor.DiscardPolicy());
     }
 
@@ -42,8 +47,8 @@ public class DelayTrigger<T> {
                 consumer.execute(() -> delayHandler.handle(delayElement.getElement()));
             }
         } catch (InterruptedException e) {
-            // ignore interrupt
-            e.printStackTrace();
+            // warn interrupt
+            LOGGER.warn("Error when kick-off delayed cache evict operation", e);
         }
     }
 

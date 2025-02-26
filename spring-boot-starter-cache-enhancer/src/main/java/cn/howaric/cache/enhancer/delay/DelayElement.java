@@ -24,7 +24,7 @@ public class DelayElement<T> implements Delayed {
 
     @Override
     public int compareTo(Delayed o) {
-        return this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS) >= 0 ? 1 : -1;
+        return (int) (this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS));
     }
 
 }
